@@ -2,11 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:layout_height="fill_parent">
+    
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    				android:layout_width="fill_parent"
+    				android:layout_height="fill_parent"
+    				android:orientation="vertical"
+    				android:layout_alignWithParentIfMissing="true"
+    				android:layout_margin="0px">
+    				
+    	<CheckBox android:layout_width="fill_parent"
+    			android:layout_height="wrap_content"
+    			android:id="@+id/CBnoATime"
+    			android:text="IO: noatime/nodiratime" />
+    			
+    	<TextView android:layout_height="wrap_content"
+    			android:layout_width="150px"
+    			android:layout_below="@+id/CBnoATime"
+    			android:id="@+id/TVschedMinGran"
+    			android:text="Kernel: Scheduler Min. Granularity" />
+    	<EditText android:layout_height="wrap_content"
+    			android:layout_width="80px"
+    			android:layout_below="@+id/CBnoATime"
+    			android:layout_toRightOf="@+id/TVschedMinGran"
+    			android:id="@+id/ETschedMinGran"
+    			android:text="0" />
+    			
+    	<TextView android:layout_height="wrap_content"
+    			android:layout_width="150px"
+    			android:layout_below="@+id/TVschedMinGran"
+    			android:id="@+id/TVschedLatency"
+    			android:text="Kernel: Scheduler Latency" />
+    	<EditText android:layout_height="wrap_content"
+    			android:layout_width="80px"
+    			android:layout_below="@+id/TVschedMinGran"
+    			android:layout_toRightOf="@+id/TVschedLatency"
+    			android:id="@+id/ETschedLatency"
+    			android:text="0" />
+    			
+    	<TextView android:layout_height="wrap_content"
+    			android:layout_width="150px"
+    			android:layout_below="@+id/TVschedLatency"
+    			android:id="@+id/TVschedWUGran"
+    			android:text="Kernel: Scheduler Wakeup Granularity" />
+    	<EditText android:layout_height="wrap_content"
+    			android:layout_width="80px"
+    			android:layout_below="@+id/TVschedLatency"
+    			android:layout_toRightOf="@+id/TVschedWUGran"
+    			android:id="@+id/ETschedMinGran"
+    			android:text="0" />
+    </RelativeLayout>
+    
 </LinearLayout>

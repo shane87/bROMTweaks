@@ -2,6 +2,7 @@ package com.shane87.bromtweaks;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.*;
 
@@ -40,11 +41,11 @@ public class bROMTweaks extends Activity {
         
         if(buildBaseScript())
         {
-        	//add code to let user know
+        	Toast.makeText(getApplicationContext(), "bROMTweaks.sh created successfuly!", Toast.LENGTH_LONG);
         }
         else
         {
-        	//add code to let user know
+        	Toast.makeText(getApplicationContext(), "bROMTweaks.sh not created!", Toast.LENGTH_LONG);
         }
     }
     
@@ -91,29 +92,29 @@ public class bROMTweaks extends Activity {
     		output = output.concat("echo 1 > /proc/sys/vm/laptop_mode;\n");
     		output = output.concat("echo \"Finished vm tweak application\" | tee -a $LOG_FILE;\n\n");
     		output = output.concat("echo \"Applying tcp ipv4 tweaks\" | tee -a $LOG_FILE;\n");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
-    		output = output.concat("");
+    		output = output.concat("echo 404480 > proc/sys/net/core/wmem_max;\n");
+    		output = output.concat("echo 404480 > proc/sys/net/core/rmem_max;\n");
+    		output = output.concat("echo 4096 16384 404480 > /proc/sys/net/ipv4/tcp_wmem;\n");
+    		output = output.concat("echo 4096 87380 404480 > /proc/sys/net/ipv4/tcp_rmem;\n");
+    		output = output.concat("echo 0 > /proc/sys/net/ipv4/tcp_timestamps;\n");
+    		output = output.concat("echo 1 > /proc/sys/net/ipv4/tcp_tw_reuse;\n");
+    		output = output.concat("echo 1 > /proc/sys/net/ipv4/tcp_sack;\n");
+    		output = output.concat("echo 1 > /proc/sys/net/ipv4/tcp_tw_recycle;\n");
+    		output = output.concat("echo 1 > /proc/sys/net/ipv4/tcp_window_scaling;\n");
+    		output = output.concat("echo 5 > /proc/sys/net/ipv4/tcp_keepalive_probes;\n");
+    		output = output.concat("echo 30 > /proc/sys/net/ipv4/tcp_keepalive_intvl;\n");
+    		output = output.concat("echo 30 > /proc/sys/net/ipv4/tcp_fin_timeout;\n");
+    		output = output.concat("echo 404480 > /proc/sys/net/core/rmem_default;\n");
+    		output = output.concat("echo 404480 > /proc/sys/net/core/wmem_default;\n");
+    		output = output.concat("echo \"Finished tcp ipv4 tweak application\" | tee -a $LOG_FILE;\n\n");
+    		output = output.concat("echo \"Applying SD Card read-ahead tweak\" | tee -a $LOG_FILE;\n");
+    		output = output.concat("if [ -e /sys/devices/virtual/bdi/179:0/read_ahead_kb ];then\n");
+    		output = output.concat("\techo 1024 > /sys/devices/virtual/bdi/179:0/read_ahead_kb;\n");
+    		output = output.concat("fi;\n");
+    		output = output.concat("echo \"SD Card read-ahead tweak applied\" | tee -a $LOG_FILE;\n\n");
+    		output = output.concat("echo \"bROM tweak script finished successfully at $( date +\"%m-%d-%Y %H:%M:%S\" )\" | tee -a $LOG_FILE;\n");
     		OutputStreamWriter out = new OutputStreamWriter(openFileOutput("bROMTweaks.sh", 0));
-    		out.write("test");
+    		out.write(output);
     		out.close();
     	}
     	catch(java.io.IOException e)
